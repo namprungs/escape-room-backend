@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15.7-bullseye  # Use PostgreSQL version 15
+    environment:
+      POSTGRES_DB: puzzle_db    # สร้างฐานข้อมูลนี้ตั้งแต่เริ่มต้น
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "5433:5432"  # Map container port 5432 to host port 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Persist data outside the container
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@example.com"  # เปลี่ยนอีเมลที่ต้องการใช้เข้าสู่ระบบ
+      PGADMIN_DEFAULT_PASSWORD: "adminpassword"  # เปลี่ยนรหัสผ่านที่ต้องการ
+    ports:
+      - "8080:80"  # เปิด port 8080 สำหรับการเข้าถึง pgAdmin ผ่านเว็บ
+    depends_on:
+      - db
+
+volumes:
+  pgdata:  # Named volume for PostgreSQL data
