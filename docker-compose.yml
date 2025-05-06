@@ -20,16 +20,6 @@ services:
       timeout: 5s
       retries: 5
 
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    restart: unless-stopped
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "admin@example.com"  # เปลี่ยนอีเมลที่ต้องการใช้เข้าสู่ระบบ
-      PGADMIN_DEFAULT_PASSWORD: "adminpassword"  # เปลี่ยนรหัสผ่านที่ต้องการ
-    ports:
-      - "8080:80"  # เปิด port 8080 สำหรับการเข้าถึง pgAdmin ผ่านเว็บ
-    depends_on:
-      - db
 
 volumes:
   pgdata:  # Named volume for PostgreSQL data
