@@ -1,5 +1,0 @@
-[phases.setup]
-nixpkgsArchive = "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.05.tar.gz"
-
-[variables]
-GO_VERSION = "1.20"
