@@ -50,7 +50,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"}, // เปลี่ยนเป็น URL ของ frontend
+		AllowOrigins:     []string{"https://eduscape.vercel.app"}, // เปลี่ยนเป็น URL ของ frontend
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Authorization", "Content-Type"},
 		ExposeHeaders:    []string{"Authorization"},
