@@ -14,10 +14,14 @@ COPY . .
 RUN go build -o server ./cmd/main.go
 
 # Stage 2: Run
-FROM gcr.io/distroless/base-debian11
+FROM debian:bookworm-slim
 
 WORKDIR /app
+
 COPY --from=builder /app/server /app/server
+COPY start.sh /app/start.sh
+
+RUN chmod +x /app/start.sh
 
 EXPOSE 5000
 
