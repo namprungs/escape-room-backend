@@ -2,7 +2,7 @@
 
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/FieldPs/escape-room-backend
+git clone https://github.com/namprungs/escape-room-backend
 cd escape-room-backend
 ```
 
